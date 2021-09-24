@@ -101,7 +101,7 @@ def test_model(model):
     le = LabelEncoder()
     X_test[:, 1] = le.fit_transform(X_test[:, 1])
 
-    predictions = dt.predict(X_test)
+    predictions = model.predict(X_test)
     results = pd.DataFrame({
         'PassengerId': test_data.PassengerId,
         'Survived': predictions
@@ -114,7 +114,7 @@ def test_model(model):
     y_test = correct_results[['Survived']]
 
     # Decision Tree
-    print(dt.score(X_test, y_test))
+    print(model.score(X_test, y_test))
 
     return results
 
